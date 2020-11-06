@@ -191,7 +191,8 @@ function checkForGremlins(
   let { gremlins, regexpWithAllChars, diagnosticCollection } = loadConfiguration(doc)
 
   if (Object.keys(gremlins).length === 0) {
-    // Clear any diagnostics from previous runs (after config change)
+    // If there are now no configured gremlins, clear any diagnostics from
+    // previous runs and short-curcuit.
     if (diagnosticCollection) {
       diagnosticCollection.set(activeTextEditor.document.uri, [])
     }
